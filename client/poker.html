@@ -1,0 +1,232 @@
+   <!DOCTYPE html>
+<html>
+<head>
+<!--
+The following is basic metadata and importing the base stylesheet and script
+-->
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<html lang="en">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name='subject' content=''>
+<link rel="stylesheet" type="text/css" href="styles/index.css">
+<link rel="stylesheet" type="text/css" href="styles/poker.css">
+<link rel="stylesheet" type="text/css" href="styles/hostmenu.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--
+The above is basic metadata and importing the base stylesheet and script
+
+Jquery import:
+
+
+Bootstrap CSS import:
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+-->
+
+<title>831 Poker</title>
+</head>
+<body>
+  <div id="popup">
+    <center>
+      <div id="innerpopup" >
+        <i class="fa fa-times destroy" style="color: white; float: right; font-size: 5em; margin-right: 15px; "></i>
+        
+      
+        <button class="menuoptions active" onclick="openOption(event, 'gameoptions')">GAME OPTIONS</button> <button class="menuoptions" onclick="openOption(event, 'playeroptions')">PLAYERS</button>
+        <br><br><br>
+        <div id="gameoptions" class="tabcont">
+            <span class="popuptext">Big Blind: </span><input class="innerinput" autocomplete="off" type="number" title="bigblindinput" /> <br><br>
+          <span class="popuptext">Small Blind: </span> <input class="innerinput" autocomplete="off" type="number" title="smallblindinput" /><br><br>
+          <span class="popuptext">Allow Straddle: </span>
+  
+          <label class="switch">
+            <input type="checkbox" id="checker">
+            <span class="slider2"></span>
+          </label> <br>  <br>  <br>
+        
+          <!-- <br> <p class="popuptext">Password? 
+        
+            <label class="switch">
+              <input type="checkbox" id="checker">
+              <span class="slider round"></span>
+            </label>
+    <br>  <br>
+            <br> <input id="popuppassword" class="serverpassword" type="text" name="password" placeholder="Not required" autocomplete="off"> </p> -->
+          <button class="actionbuttons">SAVE CHANGES</button>
+        </div>
+        <div id="playeroptions" class="tabcont">
+          <ul id="hostsList">
+            <li class="menuPlayer">
+              
+                <p class="popuptext"><span class="floatleft">Players Name</span> <span class="floatright">
+                  <button class="actionbuttons smallerfont">Kick</button>
+                  <button class="actionbuttons smallerfont">Make Host</button>
+                  <button class="actionbuttons smallerfont">Change Stack</button>
+                  <input class="innerinput smallerfont" autocomplete="off" type="number" title="newstack" />
+                  
+                </span>
+              </p>
+              
+            </li>
+          </ul>
+          
+        </div>
+        
+        
+        </div>
+    </center>
+    </div>
+  <img id="tableLogo" src="img/official-logo-white.png">
+  <div id="menu" title="Menu"><i class="fa fa-bars"></i></div>
+  <div id="pause" title="Pause Game"><i class="fa fa-pause"></i></div>
+  <center><button id="generate">Begin Game</button>
+    </center>
+
+<center>
+  <!-- TABLE START -->
+<div id="theTable">
+  <!-- PLAYERS AROUND TABLE START -->
+  <div id="players">
+    <ul id="playersList">
+      <li class="player">
+        <img class='opponentCards leftTilt' src='../img/blue_back.png'></img><img class='opponentCards rightTilt' src='../img/blue_back.png'></img><br>
+        <p>Name <br> <span class="opponentStackSize">2000</span><hr><span class="opponentMoneyInPot">200</span></p>
+      </li>
+      
+    </ul>
+  </div>
+  <!-- PLAYERS AROUND TABLE END -->
+  <div id="potSize">Pot Size: 0</div> 
+  <ul  id="theBoard">
+    <li><img class="boardCard" src='img/yellow_back.png'></img></li> <li><img class="boardCard" src='img/yellow_back.png'></img></li> <li><img class="boardCard" src='img/yellow_back.png'></img></li> <li><img class="boardCard" src='img/yellow_back.png'></img></li> <li><img class="boardCard" src='img/yellow_back.png'></img></li>
+  </ul>
+  
+   
+  <center>
+    <div id="myCards">
+      <img id="card1" class="leftTilt" src="img/blue_back.png">
+      <img id="card2" class="rightTilt" src="img/blue_back.png">
+      <div id="myPlayer" class="dealer"><img id="myDealerChip" src="img/DEALER-CHIP.png"><p ><span id="myName">Name</span><br><span id="myStack">2000</span><span id="myMoneyInPot">2</span></p></div>
+      
+    </div>
+  </center>
+</div>
+</center>
+<!-- TABLE END -->
+
+
+<div id="actionbuttons">
+  
+  <form id="poker-form" type="submit">
+    <div id="raisebar">
+      <div id="raiseBar1">
+      <button id="quarterRaise" type="button">1/4</button>
+      <button id="halfRaise" type="button">1/2</button>
+      <button id="allInRaise" type="button" >ALL IN</button>
+      <br>
+      <div id="rangeContainer"><input type="range" min="0" max="100" value="0" class="slider" id="myRange"></div>
+    </div>
+    <div id="raiseBar2">
+      <input value="20" id="raise" autocomplete="off" title="raise" type="number"/>
+    </div>  
+  </div>
+    <button class="actionbuttons" value="fold" id="foldbutton">Fold</button>
+    <button value="check" id="checkbutton" class="actionbuttons">Check</button>
+    <button value="call" id="callbutton" class="actionbuttons">Call</button>
+    <button id="raisebutton" class="actionbuttons">Raise</button>
+    
+    
+    <!-- <button id="toggleStraddle">Straddle</button> -->
+  </form>
+</div>
+
+
+
+<!-- CHAT -->
+
+<div id="chatdiv">
+  <div class="tab">
+    <button id="chattabbutton" class="tablinks active" onclick="openCity(event, 'chatbox')">CHAT</button><button class="tablinks" onclick="openCity(event, 'consolebox')">CONSOLE</button>
+  </div>
+
+
+  <div id="innerchatdiv">
+ 
+  <div id="chatbox" class="tabcontent">
+    <ul id="events">
+  
+    </ul>
+    <form id="chat-form">
+      <hr>
+      <input id="chat" autocomplete="off" title="chat" placeholder="SAY SOMETHING BASED"/><h5 id="timer"></h5>
+      </form>
+  </div>
+  <div id="consolebox" class="tabcontent">
+    <ul id="console">
+  
+    </ul>
+  </div>
+
+
+  
+
+  
+
+</div>
+</div>
+<!--CHAT END-->
+
+<!-- LOBBY BEGIN -->
+<h2 id="lobby">Lobby <span id="roomName"></span></h2>
+<!-- LOBBY END -->
+
+<!-- 
+ <div id="usersinRoom">
+  <ul id="userList">
+    <li >
+      HIIII
+      <img src="img/blue_back.png">
+    </li>
+  </ul>
+ </div> -->
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+  $("#menu").click(function(){
+    $("#popup").slideDown();
+    });
+    $(".destroy").click(function(){
+    $("#popup").fadeOut();
+    });
+    $("#checker").click(function(){
+      $(".serverpassword").toggle();
+      // if($("#password").is(":visible")){
+      //   $("#password").hide();
+      // }
+    
+    });
+    
+  });
+
+</script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="scripts/functions.js"></script>
+<script src="scripts/index.js"></script>
+<script src="scripts/poker.js"></script>
+<script src="scripts/connections.js"></script>
+<script src="scripts/onConnect.js"></script>
+<script>
+  console.log(poop);
+
+</script>
+
+
+</html>

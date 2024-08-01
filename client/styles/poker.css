@@ -1,0 +1,420 @@
+/*
+Source Code Font //
+font-family: 'Source Code Pro', monospace;
+
+Archivo Black headings font
+font-family: 'Archivo Black', sans-serif;
+
+Colors:
+//black green:
+121713
+color: cmky(53%, 41%, 51%, 85%);
+
+white yellow: 
+color: cmyk(0%, 3%, 13%, 0%);
+fff7de
+
+*/
+body{
+    background-color: #0D0D0D;
+}
+/* START GAME BUTTON */
+#generate{
+    font-family: theFont, 'Archivo Black', sans-serif;
+    background: none;
+    text-transform: uppercase;
+    outline: none !important;
+    border: none !important;
+    font-size: 2.8vw !important;
+    transition: background-color 0.2s ease-out;
+    color: white;
+
+    
+}
+#generate:focus{
+    outline: none;
+}
+#generate:hover{
+    cursor: pointer;
+    color:rgba(255,255,255, .75);
+    background: none !important;
+    
+}
+#menu{
+    position: fixed;
+    color: white;
+    right: 3vw;
+    font-size: 3.8vw;
+    top: 1.2vh;
+}
+#menu:hover{
+    cursor: pointer;
+}
+
+#pause{
+    position: fixed;
+    color: white;
+    right: 7.2vw;
+    font-size: 3.6vw;
+    top: 1.2vh;
+}
+#pause:hover{
+    cursor: pointer;
+}
+/* console */
+#consolediv{
+    width: 25%;
+    position: fixed;
+    float: right;
+    right: 0px;
+    color: #9C001B;
+}
+#console{
+    max-height: 21.3vh;
+    overflow: auto;
+    color: #9C001B;
+}
+/* ACTION BUTTONS */
+
+#raisebar{
+    background: white;
+    
+    margin-left: 200px;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 12px;
+}
+#raisebar button{
+    font-family: theFont;
+    font-size: 1.8vw;
+    background: none;
+    outline: none;
+    border: none;
+    margin: 6px;
+}
+#raiseBar1{
+    display: inline-block;
+    padding-top: 10px;
+    float: right;
+}
+#raiseBar2{
+    display: inline-block;
+    margin-top: 12px;
+    float: left;
+    width: 30%;
+
+}
+#rangeContainer{
+    background-color: #0d0d0d;
+    border-radius: 20px;
+    
+}
+.slider {
+    -webkit-appearance: none;
+    height: 25px;
+    outline: none;
+    border: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    padding: 5px;
+    width: 95% !important;
+  }
+  
+  .slider:hover {
+    
+    opacity: .7;
+  }
+  
+  .slider::-webkit-slider-thumb {
+      margin-top: 3px;
+      
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: white;
+    cursor: pointer;
+  }
+#raisebar button:hover{
+    cursor: pointer;
+    color:rgba(0,0,0, .75);
+}
+#raise{
+    font-family: theFont;
+    margin-right: 20px;
+}
+#actionbuttons{
+    right: 20px;
+    bottom: 0;
+    position: fixed;
+}
+#actionbuttons input{
+    background: None;
+    color: black;
+    outline: none;
+    border: none;
+    font-size: 3.64vw;
+    width: 11vw;
+}
+.actionbuttons{
+    color: white;
+    font-family: theFont;
+    font-size: 3.64vw;
+    display: inline;
+    background: none;
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    margin-left: 20px;
+}
+.actionbuttons:hover{
+    color:rgba(255,255,255, .75);
+    cursor: pointer;
+}
+/* ACTION BUTTONS END */
+/* CHAT */
+#chatdiv{
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    width: 25%;
+    margin: 40px;
+    margin-bottom: 60px;
+
+    font-family: Helvetica, sans-serif,'Source Code Pro', monospace;
+
+}
+#chat{
+    padding-top: 15px;
+}
+#innerchatdiv{
+    background: white;
+    border-radius: 25px;
+    padding: 10px;
+    padding-bottom: 1px;
+
+}
+#chatdiv ul{
+    max-height:21vh;
+    overflow: auto;
+    margin-left: -30px;
+}
+
+
+#chatdiv input{
+    font-family: theFont;
+    background: none;
+    font-size: 1.302vw;
+    height: 22px;
+    outline: none;
+    border: none;
+    margin: 4px;
+}
+.tab{
+    margin-left: 10px;
+    z-index: -1 !important;
+    position: relative;
+    
+}
+.tabcontent{
+    z-index: 999;
+}
+.tablinks{
+    font-size: 1.04vw;
+    font-family: theFont;
+    background: grey;
+    border-radius: 9px;
+    padding: 4px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 12px;
+    margin-bottom: -10px;
+    border: none;
+    outline: none;
+}
+.tablinks:hover{
+    cursor: pointer;
+}
+.active{
+    background-color: white !important;
+}
+
+
+/* USERLIST */
+
+#timer{
+     font-size: 1.3vw;
+    font-family: theFont; 
+    color: #9C001B;
+    margin: 0;
+    padding: 8px;
+}
+li{
+    list-style-type: none;
+}
+
+/* TABLE */
+#theTable{
+    background-image: url("../img/table.png");
+    /* border: 20px solid white;
+    min-height: 600px;
+    width: 80%;
+    border-radius: 10%; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 7em;
+    min-height: 600px;
+    position: relative;
+}
+#tableLogo{
+    position: fixed;
+    top: 1.2vh;
+    left: -1vw;
+    width: 450px;
+}
+#potSize{
+    color:white;
+    font-size: 2vw;
+    font-family: theFont;
+    text-transform: uppercase;
+}
+#theBoard li{
+    display:inline-block;
+    margin:10px;
+}
+
+#lobby{
+    font-family: theFont;
+    text-transform: uppercase;
+    color: white;
+    position: fixed;
+    margin-left: 2%;
+    z-index: 99;
+    font-size: 30px;
+    bottom: -15px;
+}
+
+.hidden{
+    display: none;
+}
+/* OTHER PLAYERS 
+<li class="player">
+        <img class='opponentCards leftTilt' src='../img/blue_back.png'></img><img class='opponentCards rightTilt' src='../img/blue_back.png'></img><br>
+        <p>Name <br> <span class="opponentStackSize">2000</span><hr><span class="opponentMoneyInPot">200</span></p>
+      </li>*/
+.player{
+    
+    position: relative;
+    display: inline-block;
+    margin-top: -72px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-family: theFont;
+    margin-right: 100px;
+    margin-left: 100px;
+    padding: 0;
+}
+.playerp{
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    margin-top: -10px;
+    padding-top: 5px;
+    text-transform: uppercase;
+}
+/* .opponentName{
+    color:#9C001B !important;
+} */
+.opponentMoneyInPot{
+    color: white !important;
+    float: right;
+    margin-right: 10px;
+    font-size: 20px;
+}
+/* .dealer .playerp{
+     background-color: goldenrod !important; 
+} */
+.dealerchip{
+    display: none;
+    width: 2vw;
+}
+.dealer .dealerchip{
+   
+   display: block;
+    padding: 10px;
+}
+/* CARDS */
+.opponentCards{
+    width: 4vw;
+    margin: 0;
+    padding: 0;
+}
+#myCards{
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#myCards p{
+    font-family: theFont;
+    background-color: white;
+    margin: 0;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: -10px;
+    padding-top: 5px;
+    text-transform: uppercase;
+}
+#myStack{
+    float: left;
+    margin-left: 20px;
+}
+#myMoneyInPot{
+    position: relative;
+   margin-right: -80px;
+}
+#card1, #card2{
+    width: 5.5vw;
+    
+}
+.boardCard{
+    width: 4.5vw ;
+}
+.glow .playerp{
+    box-shadow: #9C001B 0px 5px 15px;
+    border-radius: 5px;
+}
+.youGlow p{
+    box-shadow: #9C001B 0px 5px 15px;
+    border-radius: 5px;
+}
+.dealer #myDealerChip{
+    display: block;
+}
+#myDealerChip{
+    position: absolute;
+    display: none;
+    margin-left: -90px;
+    margin-top: -170px;
+}
+.leftTilt{
+    transform: rotate(-7deg);
+}
+.rightTilt{
+    transform: rotate(7deg);
+}
+
+

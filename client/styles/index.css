@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@font-face {
+    font-family: theFont;
+    src: url(NONK.ttf);
+  }
+
+/*
+Source Code Font //
+font-family: 'Source Code Pro', monospace;
+
+Archivo Black headings font
+font-family: 'Archivo Black', sans-serif;
+
+Colors:
+//black green:
+121713
+#131E15
+color: cmky(53%, 41%, 51%, 85%);
+
+GREEN TABLE
+#131E15
+
+BLACK GREY
+#0D0D0D
+
+COMPLEMENTARY RED
+#9C001B
+
+
+white yellow: 
+color: cmyk(0%, 3%, 13%, 0%);
+
+*/
+
+body{
+  margin: 0;
+}
+#popup{
+  display: none;
+  z-index: 9999;
+  background:rgb(0,0,0, .5);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  position: fixed;
+  margin: 0;
+}
+#innerpopup{
+ background-color: #0d0d0d;
+ border: 5px solid white;
+  padding: 20px;
+   width: 60%; margin-top: 4%;
+}
+.destroy:hover{
+  cursor: pointer;
+}
+
+
