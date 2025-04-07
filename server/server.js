@@ -1,7 +1,7 @@
-
 const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
+const path = require("path");
 
 const port = process.env.PORT || 8080;
 
@@ -24,9 +24,14 @@ const e = require("express");
 
 //server setup
 const app = express();
-const clientPath = `${__dirname}/../client`;
+const clientPath = path.join(__dirname, '../client');
 app.use(express.static(clientPath));
-console.log(`Serving static from ${clientPath}`);
+
+// Serve poker.html as the main page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(clientPath, 'poker.html'));
+});
+
 const server = http.createServer(app);
 const listOfPokerRooms = [];
 
@@ -319,7 +324,7 @@ server.on('error', (err) =>{
 });
 
 server.listen(port, () => {
-  console.log("Server started on port", port);
+  console.log(`Server is running on port ${port}`);
 });
 
 

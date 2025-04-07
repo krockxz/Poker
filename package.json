@@ -1,47 +1,21 @@
 {
-  "name": "poker-extension",
+  "name": "sPoker",
   "version": "1.0.0",
-  "description": "Chrome Extension for Poker",
-  "private": true,
+  "description": "Poker Web Application",
+  "main": "server/server.js",
   "scripts": {
-    "start": "npm run build && node scripts/serve.js",
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "watch": "vite build --watch",
-    "test": "jest",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "clean": "rimraf dist",
-    "prebuild": "npm run clean",
-    "zip": "node scripts/zip.js",
-    "package": "npm run build && npm run zip"
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "socket.io-client": "^4.7.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "express": "^4.17.1",
+    "socket.io": "^3.0.4"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.260",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.24",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "jest": "^29.7.0",
-    "prettier": "^3.2.5",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4",
-    "rimraf": "^5.0.5",
-    "archiver": "^6.0.1",
-    "express": "^4.18.2"
+    "nodemon": "^2.0.6"
   },
-  "keywords": ["chrome-extension", "poker"],
+  "keywords": ["poker", "websockets"],
   "author": "",
   "license": "ISC"
 }
