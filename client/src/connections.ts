@@ -11,7 +11,10 @@ let bigBlind = '';
 // Submitting create and join requests to the server
 
 $(document).ready(function () {
+  console.log("Connections script loaded. Attaching handlers...");
+
   $(".joinConnection").click(function (event: any) {
+    console.log("Join clicked");
     event.preventDefault();
 
     username = ($("#username") as any).val();
@@ -19,10 +22,12 @@ $(document).ready(function () {
     lobbyname = ($("#lobbyname") as any).val();
     password = ($("#password") as any).val();
 
+    console.log("Emitting joinAttempt", { username, stacksize, lobbyname });
     sock.emit('joinAttempt', { username, stacksize, lobbyname, password });
   });
 
   $(".createConnection").click(function (event: any) {
+    console.log("Create clicked");
     event.preventDefault();
 
     username = ($("#popupusername") as any).val();
@@ -32,6 +37,7 @@ $(document).ready(function () {
     bigBlind = ($("#popupbigblind") as any).val();
     password = ($("#popuppassword") as any).val();
 
+    console.log("Emitting createAttempt", { username, stacksize, lobbyname });
     sock.emit('createAttempt', { username, stacksize, lobbyname, smallBlind, bigBlind, password });
   });
 });

@@ -1,64 +1,93 @@
 <!DOCTYPE html>
-<html>
-<head>
-<!--
-The following is basic metadata and importing the base stylesheet and script
--->
-<meta charset="UTF-8">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <html lang="en">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name='subject' content=''>
-<link rel="stylesheet" type="text/css" href="styles/index.css">
-<link rel="stylesheet" type="text/css" href="styles/login.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<title>Poker - Login</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play poker online with friends">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="styles/index.css">
+  <link rel="stylesheet" type="text/css" href="styles/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Poker - Login</title>
 </head>
 <body>
 
-<center id="content">
-<img src="styles/img/logo-file.png">
+  <!-- Main Content -->
+  <div id="content">
+    <img src="styles/img/logo-file.png" alt="Poker Logo">
 
-<div id="popup">
-  <div id="innerpopup" >
-    <i class="fa fa-times destroy" style="color: white; float: right; font-size: 5em; margin-right: 15px; "></i>
-    <form id="enter" action="poker.html">
-      <p><span class="input">Your Name: <input id="popupusername" type="text" name="username" placeholder="User name" required autocomplete="off"/></span> </p>
-      <p>Default Stack: <input id="popupstacksize" type="number" name="stacksize" placeholder="Stack size" required autocomplete="off"/> </p>
-     <!-- <input type="checkbox" id="default" name="default" value="Default">
-      <label for="default"> Make Default Stack Size</label><br>  -->
-      <p>Small Blind: <input id="popupsmallblind" type="number" name="smallblind" placeholder="Stack size" required autocomplete="off"/> </p>
-      <p>Big Blind: <input id="popupbigblind" type="number" name="bigblind" placeholder="Stack size" required autocomplete="off"/> </p>
-      <p>Lobby Name: <input id="popuplobbyname" type="text" name="lobbyname" placeholder="Lobby name" required autocomplete="off"> </p>
-      <p>Password? 
-        
-        <label class="switch">
-          <input type="checkbox" id="checker">
-          <span class="slider round"></span>
-        </label>
-<br>
-        <br> <input id="popuppassword" class="serverpassword" type="text" name="password" placeholder="Not required" autocomplete="off"> </p><br>
-      <button class="createConnection" id="createGame">Create Game</button><br><br>
-      
+    <!-- Join Game Form -->
+    <form id="enter" class="formclass" action="poker.html">
+      <p>
+        <label for="username">Name</label>
+        <input id="username" type="text" name="username" placeholder="Enter your name" required autocomplete="off">
+      </p>
+      <p>
+        <label for="stacksize">Stack</label>
+        <input id="stacksize" type="number" name="stacksize" placeholder="Stack size" required autocomplete="off">
+      </p>
+      <p>
+        <label for="lobbyname">Lobby</label>
+        <input id="lobbyname" type="text" name="lobbyname" placeholder="Lobby name" required autocomplete="off">
+      </p>
+      <p>
+        <label for="password">Password</label>
+        <input id="password" type="text" name="password" placeholder="Not required" autocomplete="off">
+      </p>
+      <button type="submit" class="joinConnection" id="join">Join Game</button>
+      <button type="button" id="createGame" class="create">Create Game</button>
     </form>
   </div>
-</div>
 
-<form id="enter" class ="formclass">
-  <p><span class="input">Name: <input id="username" type="text" name="username" placeholder="User name" required autocomplete="off"/></span> </p>
-  <p>Stack: <input id="stacksize" type="number" name="stacksize" placeholder="Stack size" required autocomplete="off"/> </p>
-  <p>Lobby: <input id="lobbyname" type="text" name="lobbyname" placeholder="Lobby name" required autocomplete="off"> </p>
-  <p>Password: <input id="password" type="text" name="password" placeholder="shhh" autocomplete="off"> </p><br>
-  <button class ="joinConnection"id="join" >Join Game</button>
-  <button id="join" onclick="return false" class="create" type="button" >Create Game</button>
-</form>
-</center>
-<center><p id="footer"> Poker 
-  
+  <!-- Create Game Popup Modal -->
+  <div id="popup">
+    <div id="innerpopup">
+      <button class="destroy" aria-label="Close popup">
+        <i class="fa fa-times"></i>
+      </button>
+      <h2 class="font-display">Create New Game</h2>
+      <form id="create-form" action="poker.html">
+        <p>
+          <label for="popupusername">Your Name</label>
+          <input id="popupusername" type="text" name="username" placeholder="User name" required autocomplete="off">
+        </p>
+        <p>
+          <label for="popupstacksize">Default Stack</label>
+          <input id="popupstacksize" type="number" name="stacksize" placeholder="Stack size" required autocomplete="off">
+        </p>
+        <p>
+          <label for="popupsmallblind">Small Blind</label>
+          <input id="popupsmallblind" type="number" name="smallblind" placeholder="Small blind" required autocomplete="off">
+        </p>
+        <p>
+          <label for="popupbigblind">Big Blind</label>
+          <input id="popupbigblind" type="number" name="bigblind" placeholder="Big blind" required autocomplete="off">
+        </p>
+        <p>
+          <label for="popuplobbyname">Lobby Name</label>
+          <input id="popuplobbyname" type="text" name="lobbyname" placeholder="Lobby name" required autocomplete="off">
+        </p>
+        <p>
+          <label for="checker">
+            Password Required
+            <label class="switch">
+              <input type="checkbox" id="checker">
+              <span class="slider round"></span>
+            </label>
+          </label>
+          <input id="popuppassword" class="serverpassword" type="text" name="password" placeholder="Enter password" autocomplete="off">
+        </p>
+        <button type="submit" class="createConnection" id="createGameBtn">Create Game</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    Poker
+  </footer>
+
+  <!-- Bundled Scripts -->
+  <script src="dist/bundle.js"></script>
 </body>
-<!-- Bundled Scripts -->
-<script src="dist/bundle.js"></script>
-
 </html>

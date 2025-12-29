@@ -1,77 +1,130 @@
-#innerpopup .popuptext{
-    font-family: theFont;
-    text-transform: uppercase;
-    color: white;
-    font-size: 30px;
-}
-#innerpopup select{
-    font-family: theFont;
-    text-transform: uppercase;
-    color: black;
-    font-size: 30px;
-}
-.menuoptions{
-    background: grey;
-    padding: 20px;
-    border: none;
-    outline: none;
-    font-family: theFont;
-    text-transform: uppercase;
-    font-size: 35px;
-}
-.menuoptions:hover{
-    cursor: pointer;
+/**
+ * Host Menu Popup - Additional Styles
+ * These styles extend the base popup styling from index.css
+ */
+
+/* Form elements inside popup */
+#innerpopup form {
+  margin-top: var(--spacing-6);
 }
 
-#playeroptions{
-    display: none;
+#innerpopup input[type="number"] {
+  background-color: hsl(var(--input));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-md);
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  padding: var(--spacing-2) var(--spacing-3);
+  outline: none;
+  width: 100px;
+  transition: all var(--transition-base);
 }
 
-input[type='checkbox'] {
-    
-    width:30px;
-    height:30px;
-    background:white;
-    border-radius:5px;
-    margin-top: 5px;
-}
-input[type='checkbox']:checked {
-    background: #9C001B !important;
-    outline: none;
+#innerpopup input[type="number"]:focus {
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1);
 }
 
-.innerinput{
-    font-family: theFont;
-    font-size: 30px;
-    background: none;
-    width: 4em;
-    color: white;
-}
-.innerinput:focus{
-    outline: none;
-}
-
-.menuPlayer{
-    height: 50px;
-    width: 80%;
-    padding: 10px;
-    padding-bottom: 14px;
-    border-bottom: 4px solid #9C001B;
-  
+/* Checkbox styling for straddle option */
+#innerpopup input[type='checkbox'] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: hsl(var(--input));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
 }
 
-.floatright{
-    float: right;
-}
-.floatleft{
-    float: left;
-}
-.smallerfont{
-    font-size: 25px !important;
-    border-bottom: none !important;
+#innerpopup input[type='checkbox']:checked {
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
 }
 
-#hostsList{
-    list-style-image: none;
-    
+#innerpopup input[type='checkbox']:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid hsl(var(--primary-foreground));
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+#innerpopup input[type='checkbox']:focus-visible {
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.2);
+}
+
+/* Slider2 variant for straddle toggle */
+.slider2 {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.slider2::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: hsl(var(--muted-foreground));
+  transition: all var(--transition-base);
+  border-radius: 50%;
+}
+
+input[type="checkbox"]:checked + .slider2 {
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+}
+
+input[type="checkbox"]:checked + .slider2::before {
+  transform: translateX(22px);
+  background-color: hsl(var(--primary-foreground));
+}
+
+input[type="checkbox"]:focus-visible + .slider2 {
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.2);
+}
+
+/* Label text styling */
+#innerpopup .popuptext {
+  display: block;
+  margin-bottom: var(--spacing-2);
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+/* Button styling */
+#innerpopup .actionbuttons {
+  width: 100%;
+  margin-top: var(--spacing-4);
+}
+
+/* Tab content spacing */
+#innerpopup .tabcont {
+  margin-top: var(--spacing-6);
+}
+
+/* Hide player options tab by default */
+#playeroptions {
+  display: none;
+}
+
+#playeroptions.show {
+  display: block;
+}
+
+#gameoptions.show {
+  display: block;
 }

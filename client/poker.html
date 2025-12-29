@@ -1,174 +1,174 @@
-   <!DOCTYPE html>
-<html>
-<head>
-<!--
-The following is basic metadata and importing the base stylesheet and script
--->
-<meta charset="UTF-8">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<!DOCTYPE html>
 <html lang="en">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name='subject' content=''>
-<link rel="stylesheet" type="text/css" href="styles/index.css">
-<link rel="stylesheet" type="text/css" href="styles/poker.css">
-<link rel="stylesheet" type="text/css" href="styles/hostmenu.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<title>Poker</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play poker online with friends">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="styles/index.css">
+  <link rel="stylesheet" type="text/css" href="styles/poker.css">
+  <link rel="stylesheet" type="text/css" href="styles/hostmenu.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Poker</title>
 </head>
 <body>
-  <div id="popup">
-    <center>
-      <div id="innerpopup" >
-        <i class="fa fa-times destroy" style="color: white; float: right; font-size: 5em; margin-right: 15px; "></i>
-        
-      
-        <button class="menuoptions active" onclick="openOption(event, 'gameoptions')">GAME OPTIONS</button> <button class="menuoptions" onclick="openOption(event, 'playeroptions')">PLAYERS</button>
-        <br><br><br>
-        <div id="gameoptions" class="tabcont">
-            <span class="popuptext">Big Blind: </span><input class="innerinput" autocomplete="off" type="number" title="bigblindinput" /> <br><br>
-          <span class="popuptext">Small Blind: </span> <input class="innerinput" autocomplete="off" type="number" title="smallblindinput" /><br><br>
-          <span class="popuptext">Allow Straddle: </span>
-  
-          <label class="switch">
-            <input type="checkbox" id="checker">
-            <span class="slider2"></span>
-          </label> <br>  <br>  <br>
-        
-          <button class="actionbuttons">SAVE CHANGES</button>
-        </div>
-        <div id="playeroptions" class="tabcont">
-          <ul id="hostsList">
-            <li class="menuPlayer">
-              
-                <p class="popuptext"><span class="floatleft">Players Name</span> <span class="floatright">
-                  <button class="actionbuttons smallerfont">Kick</button>
-                  <button class="actionbuttons smallerfont">Make Host</button>
-                  <button class="actionbuttons smallerfont">Change Stack</button>
-                  <input class="innerinput smallerfont" autocomplete="off" type="number" title="newstack" />
-                  
-                </span>
-              </p>
-              
-            </li>
-          </ul>
-          
-        </div>
-        
-        
-        </div>
-    </center>
-    </div>
-  <img id="tableLogo" src="styles/img/logo-file.png">
-  <div id="menu" title="Menu"><i class="fa fa-bars"></i></div>
-  <div id="pause" title="Pause Game"><i class="fa fa-pause"></i></div>
-  <center><button id="generate">Begin Game</button>
-    </center>
 
-<center>
-  <!-- TABLE START -->
-<div id="theTable">
-  <!-- PLAYERS AROUND TABLE START -->
-  <div id="players">
-    <ul id="playersList">
-      <li class="player">
-        <img class='opponentCards leftTilt' src='../img/blue_back.png'></img><img class='opponentCards rightTilt' src='../img/blue_back.png'></img><br>
-        <p>Name <br> <span class="opponentStackSize">2000</span><hr><span class="opponentMoneyInPot">200</span></p>
-      </li>
-      
-    </ul>
+  <!-- Logo -->
+  <img id="tableLogo" src="styles/img/logo-file.png" alt="Poker Logo">
+
+  <!-- Top Bar Controls -->
+  <div id="menu" title="Menu" aria-label="Open menu">
+    <i class="fa fa-bars"></i>
   </div>
-  <!-- PLAYERS AROUND TABLE END -->
-  <div id="potSize">Pot Size: 0</div> 
-  <ul  id="theBoard">
-    <li><img class="boardCard" src='img/yellow_back.png'></img></li> <li><img class="boardCard" src='img/yellow_back.png'></img></li> <li><img class="boardCard" src='img/yellow_back.png'></img></li> <li><img class="boardCard" src='img/yellow_back.png'></img></li> <li><img class="boardCard" src='img/yellow_back.png'></img></li>
-  </ul>
-  
-   
-  <center>
-    <div id="myCards">
-      <img id="card1" class="leftTilt" src="img/blue_back.png">
-      <img id="card2" class="rightTilt" src="img/blue_back.png">
-      <div id="myPlayer" class="dealer"><img id="myDealerChip" src="img/DEALER-CHIP.png"><p ><span id="myName">Name</span><br><span id="myStack">2000</span><span id="myMoneyInPot">2</span></p></div>
-      
+  <div id="pause" title="Pause Game" aria-label="Pause game">
+    <i class="fa fa-pause"></i>
+  </div>
+
+  <!-- Begin Game Button -->
+  <div>
+    <button id="generate">Begin Game</button>
+  </div>
+
+  <!-- Poker Table -->
+  <div id="theTable">
+    <!-- Players Around Table -->
+    <div id="players">
+      <ul id="playersList">
+        <li class="player">
+          <img class='opponentCards leftTilt' src='../img/blue_back.png' alt="">
+          <img class='opponentCards rightTilt' src='../img/blue_back.png' alt="">
+          <p>Name <br><span class="opponentStackSize">2000</span><hr><span class="opponentMoneyInPot">200</span></p>
+        </li>
+      </ul>
     </div>
-  </center>
-</div>
-</center>
-<!-- TABLE END -->
 
+    <!-- Pot Size -->
+    <div id="potSize">Pot Size: 0</div>
 
+    <!-- Board Cards -->
+    <ul id="theBoard">
+      <li><img class="boardCard" src='img/yellow_back.png' alt=""></li>
+      <li><img class="boardCard" src='img/yellow_back.png' alt=""></li>
+      <li><img class="boardCard" src='img/yellow_back.png' alt=""></li>
+      <li><img class="boardCard" src='img/yellow_back.png' alt=""></li>
+      <li><img class="boardCard" src='img/yellow_back.png' alt=""></li>
+    </ul>
 
-<div id="gameHints" class="hint-box">Waiting for game to start...</div>
+    <!-- My Cards -->
+    <div id="myCards">
+      <img id="card1" class="leftTilt" src="img/blue_back.png" alt="">
+      <img id="card2" class="rightTilt" src="img/blue_back.png" alt="">
+      <div id="myPlayer" class="dealer">
+        <img id="myDealerChip" class="dealerchip" src="img/DEALER-CHIP.png" alt="">
+        <p>
+          <span id="myName">Name</span><br>
+          <span id="myStack">2000</span>
+          <span id="myMoneyInPot">2</span>
+        </p>
+      </div>
+    </div>
+  </div>
 
-<div id="actionbuttons">
-  
-  <form id="poker-form" type="submit">
+  <!-- Game Hints -->
+  <div id="gameHints" class="hint-box">Waiting for game to start...</div>
+
+  <!-- Action Buttons -->
+  <div id="actionbuttons">
     <div id="raisebar">
       <div id="raiseBar1">
-      <button id="quarterRaise" type="button">1/4</button>
-      <button id="halfRaise" type="button">1/2</button>
-      <button id="allInRaise" type="button" >ALL IN</button>
-      <br>
-      <div id="rangeContainer"><input type="range" min="0" max="100" value="0" class="slider" id="myRange"></div>
+        <button id="quarterRaise" type="button">1/4</button>
+        <button id="halfRaise" type="button">1/2</button>
+        <button id="allInRaise" type="button">ALL IN</button>
+        <div id="rangeContainer">
+          <input type="range" min="0" max="100" value="0" class="slider" id="myRange" aria-label="Raise amount slider">
+        </div>
+      </div>
+      <div id="raiseBar2">
+        <input value="20" id="raise" autocomplete="off" title="raise" type="number" aria-label="Raise amount">
+      </div>
     </div>
-    <div id="raiseBar2">
-      <input value="20" id="raise" autocomplete="off" title="raise" type="number"/>
-    </div>  
-  </div>
-    <button class="actionbuttons" value="fold" id="foldbutton">Fold</button>
-    <button value="check" id="checkbutton" class="actionbuttons">Check</button>
-    <button value="call" id="callbutton" class="actionbuttons">Call</button>
-    <button id="raisebutton" class="actionbuttons">Raise</button>
-    
-    
-    <!-- <button id="toggleStraddle">Straddle</button> -->
-  </form>
-</div>
-
-
-
-<!-- CHAT -->
-
-<div id="chatdiv">
-  <div class="tab">
-    <button id="chattabbutton" class="tablinks active" onclick="openCity(event, 'chatbox')">CHAT</button><button class="tablinks" onclick="openCity(event, 'consolebox')">CONSOLE</button>
+    <form id="poker-form" type="submit">
+      <button class="actionbuttons" value="fold" id="foldbutton">Fold</button>
+      <button value="check" id="checkbutton" class="actionbuttons">Check</button>
+      <button value="call" id="callbutton" class="actionbuttons">Call</button>
+      <button id="raisebutton" class="actionbuttons">Raise</button>
+    </form>
   </div>
 
+  <!-- Chat / Console -->
+  <div id="chatdiv">
+    <div class="tab">
+      <button id="chattabbutton" class="tablinks active" onclick="openCity(event, 'chatbox')">CHAT</button>
+      <button class="tablinks" onclick="openCity(event, 'consolebox')">CONSOLE</button>
+    </div>
 
-  <div id="innerchatdiv">
- 
-  <div id="chatbox" class="tabcontent">
-    <ul id="events">
-  
-    </ul>
-    <form id="chat-form">
-      <hr>
-      <input id="chat" autocomplete="off" title="chat" placeholder="SAY SOMETHING BASED"/><h5 id="timer"></h5>
-      </form>
+    <div id="innerchatdiv">
+      <div id="chatbox" class="tabcontent show">
+        <ul id="events"></ul>
+        <form id="chat-form">
+          <input id="chat" autocomplete="off" title="chat" placeholder="Say something..." aria-label="Chat message">
+          <h5 id="timer"></h5>
+        </form>
+      </div>
+      <div id="consolebox" class="tabcontent">
+        <ul id="console"></ul>
+      </div>
+    </div>
   </div>
-  <div id="consolebox" class="tabcontent">
-    <ul id="console">
-  
-    </ul>
+
+  <!-- Lobby Info -->
+  <h2 id="lobby">Lobby <span id="roomName"></span></h2>
+
+  <!-- Host Menu Popup -->
+  <div id="popup">
+    <div id="innerpopup">
+      <button class="destroy" aria-label="Close menu">
+        <i class="fa fa-times"></i>
+      </button>
+
+      <div class="tab">
+        <button class="menuoptions active" onclick="openOption(event, 'gameoptions')">GAME OPTIONS</button>
+        <button class="menuoptions" onclick="openOption(event, 'playeroptions')">PLAYERS</button>
+      </div>
+
+      <div id="gameoptions" class="tabcont show">
+        <label class="popuptext" for="bigblindinput">Big Blind</label>
+        <input class="innerinput" autocomplete="off" type="number" title="bigblindinput">
+
+        <label class="popuptext" for="smallblindinput">Small Blind</label>
+        <input class="innerinput" autocomplete="off" type="number" title="smallblindinput">
+
+        <label class="popuptext">
+          Allow Straddle
+          <label class="switch">
+            <input type="checkbox" id="straddlechecker">
+            <span class="slider2"></span>
+          </label>
+        </label>
+
+        <button class="actionbuttons">SAVE CHANGES</button>
+      </div>
+
+      <div id="playeroptions" class="tabcont">
+        <ul id="hostsList">
+          <li class="menuPlayer">
+            <p class="popuptext">
+              <span class="floatleft">Player Name</span>
+              <span class="floatright">
+                <button class="actionbuttons smallerfont">Kick</button>
+                <button class="actionbuttons smallerfont">Make Host</button>
+                <button class="actionbuttons smallerfont">Change Stack</button>
+                <input class="innerinput smallerfont" autocomplete="off" type="number" title="newstack">
+              </span>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
-
-  
-
-  
-
-</div>
-</div>
-<!--CHAT END-->
-
-<!-- LOBBY BEGIN -->
-<h2 id="lobby">Lobby <span id="roomName"></span></h2>
-<!-- LOBBY END -->
+  <!-- Bundled Scripts -->
+  <script src="dist/bundle.js"></script>
 
 </body>
-<!-- Bundled Scripts -->
-<script src="dist/bundle.js"></script>
-
 </html>

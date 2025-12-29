@@ -1,137 +1,340 @@
-body{
-    background-color: #1e2620;
-}
-#content{
-    margin-top: 5%;
-}
-p{
-    color: white;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 30px;
-}
-.input{
-    padding: 10px;
-        border: 2px solid white;
-}
-input{
-    background:none;
-    color: white;
-    margin: 5px;
-    padding: 5px;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 30px;
-    border: none;   
-}
-input:focus{
-    border: none;
-    outline: none;
-}
-button{
-    background: none;
-    border: none;
-    padding: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    color: #1e2620;
-    letter-spacing: -1px;
-    font-family: theFont;
-    font-size: 3.5vw;
-    text-transform: uppercase;
-    background: white;
-    transition: background-color 0.2s ease-out;
-    margin-left: 40px;
-    margin-right: 40px;
+/**
+ * Login Page - Shadcn-Inspired Design
+ */
 
-}
-button:hover{
-    cursor: pointer;
-    background-color: grey;
-    
-}
-#aboutus{
-    text-decoration: underline !important;
-
-}
-#footer a{
-    color: white;
-    text-decoration: none;
-    transition: color .1s ease-in-out;
-}
-#footer a:hover{
-    color: #6B3934
-}
-#footer{
-    font-size: 15px;
-    position:fixed;
-       left:0px;
-       bottom:0px;
-       width:100%;
-       margin-bottom: 30px;
+/* Page Layout */
+#content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8);
+  gap: var(--spacing-8);
 }
 
+#content > img {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================
+   FORM CARD COMPONENT
+   ============================================ */
+
+.formclass {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.formclass p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* Labels */
+.input > span,
+.formclass > p:not(:has(.input)) {
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  background-color: hsl(var(--input));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-md);
+  color: hsl(var(--foreground));
+  padding: var(--spacing-3) var(--spacing-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  transition: all var(--transition-base);
+  outline: none;
+}
+
+input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+input:hover {
+  border-color: hsl(var(--muted-foreground) / 0.5);
+}
+
+input:focus {
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1);
+}
+
+/* Input wrapper styling */
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: 0;
+  border: none;
+}
+
+/* ============================================
+   BUTTON VARIANTS
+   ============================================ */
+
+/* Primary button */
+button.joinConnection,
+button.createConnection,
+.create {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  width: 100%;
+}
+
+button.joinConnection:hover,
+button.createConnection:hover,
+.create:hover {
+  background-color: hsl(var(--primary) / 0.9);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+button.joinConnection:focus-visible,
+button.createConnection:focus-visible,
+.create:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+button.joinConnection:active,
+button.createConnection:active,
+.create:active {
+  transform: translateY(0);
+}
+
+/* Secondary button (outline variant for Create Game) */
+#createGame {
+  background-color: transparent;
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  width: 100%;
+}
+
+#createGame:hover {
+  background-color: hsl(var(--accent));
+  border-color: hsl(var(--border));
+  transform: translateY(-1px);
+}
+
+#createGame:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Button group */
+.formclass button + button {
+  margin-top: var(--spacing-3);
+}
+
+/* ============================================
+   TOGGLE SWITCH COMPONENT
+   ============================================ */
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .switch input { 
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsl(var(--input));
+  border: 1px solid hsl(var(--border));
+  transition: all var(--transition-base);
+  border-radius: var(--radius-full);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: hsl(var(--muted-foreground));
+  transition: all var(--transition-base);
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+  background-color: hsl(var(--primary-foreground));
+}
+
+input:focus-visible + .slider {
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.2);
+}
+
+.slider.round {
+  border-radius: var(--radius-full);
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* ============================================
+   CREATE GAME POPUP MODAL
+   ============================================ */
+
+#popup form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+#popup form p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+#popup label {
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+#popup .switch {
+  flex-shrink: 0;
+}
+
+.serverpassword {
+  display: none;
+}
+
+.serverpassword.show {
+  display: block;
+  animation: slideDown var(--transition-base) ease-out;
+}
+
+@keyframes slideDown {
+  from {
     opacity: 0;
-    width: 0;
-    height: 0;
+    transform: translateY(-8px);
   }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+#footer {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: hsl(var(--muted-foreground));
+  text-align: center;
+  padding: var(--spacing-4);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#footer a {
+  color: hsl(var(--muted-foreground));
+  transition: color var(--transition-base);
+}
+
+#footer a:hover {
+  color: hsl(var(--primary));
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 640px) {
+  #content {
+    padding: var(--spacing-4);
   }
 
- .serverpassword{
-      display: none;
-      border: 2px solid white;
-      padding: 10px;
+  .formclass {
+    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
   }
+
+  button.joinConnection,
+  button.createConnection,
+  .create,
+  #createGame {
+    font-size: var(--text-base);
+    padding: var(--spacing-3) var(--spacing-5);
+  }
+
+  #innerpopup {
+    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
+  }
+}

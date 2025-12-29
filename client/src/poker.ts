@@ -106,6 +106,10 @@ $(document).ready(function () {
   $(".destroy").click(function () {
     $("#popup").fadeOut();
   });
+  $("#createGame").click(function (e) {
+    e.preventDefault();
+    $("#popup").fadeIn();
+  });
   $("#checker").click(function () {
     $(".serverpassword").toggle();
   });

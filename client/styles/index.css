@@ -1,59 +1,330 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
-@font-face {
-    font-family: theFont;
-    src: url(NONK.ttf);
-  }
+/**
+ * Poker App - Shadcn-Inspired Design System
+ * Modern CSS variables and base styles
+ */
 
-/*
-Source Code Font //
-font-family: 'Source Code Pro', monospace;
+/* ============================================
+   DESIGN TOKENS - CSS Custom Properties
+   Using HSL color values like shadcn/ui
+   ============================================ */
 
-Archivo Black headings font
-font-family: 'Archivo Black', sans-serif;
+:root {
+  /* Base colors - HSL values */
+  --background: 240 10% 3.9%;      /* #0a0a0a - very dark background */
+  --foreground: 0 0% 98%;           /* #fafafa - nearly white text */
 
-Colors:
-//black green:
-121713
-#131E15
-color: cmky(53%, 41%, 51%, 85%);
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
 
-GREEN TABLE
-#131E15
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
 
-BLACK GREY
-#0D0D0D
+  /* Primary brand color - subtle purple accent */
+  --primary: 263 70% 50%;           /* Purple accent */
+  --primary-foreground: 0 0% 98%;
 
-COMPLEMENTARY RED
-#9C001B
+  /* Secondary - muted tones */
+  --secondary: 240 3.7% 15.9%;      /* Dark gray */
+  --secondary-foreground: 0 0% 98%;
 
+  /* Muted states */
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
 
-white yellow: 
-color: cmyk(0%, 3%, 13%, 0%);
+  /* Accent color - subtle highlight */
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
 
-*/
+  /* Destructive actions */
+  --destructive: 0 62.8% 30.6%;     /* Red for fold/quit */
+  --destructive-foreground: 0 0% 98%;
 
-body{
-  margin: 0;
+  /* Poker specific colors */
+  --poker-table: 142 40% 20%;       /* Dark green table */
+  --poker-table-border: 142 40% 30%;
+
+  /* Border & Input */
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 263 70% 50%;
+
+  /* Border radius tokens */
+  --radius-sm: 0.25rem;      /* 4px */
+  --radius: 0.5rem;          /* 8px */
+  --radius-md: 0.75rem;      /* 12px */
+  --radius-lg: 1rem;         /* 16px */
+  --radius-xl: 1.5rem;       /* 24px */
+  --radius-full: 9999px;
+
+  /* Spacing scale (4px base) */
+  --spacing-1: 0.25rem;      /* 4px */
+  --spacing-2: 0.5rem;       /* 8px */
+  --spacing-3: 0.75rem;      /* 12px */
+  --spacing-4: 1rem;         /* 16px */
+  --spacing-5: 1.25rem;      /* 20px */
+  --spacing-6: 1.5rem;       /* 24px */
+  --spacing-8: 2rem;         /* 32px */
+  --spacing-10: 2.5rem;      /* 40px */
+  --spacing-12: 3rem;        /* 48px */
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-display: "Archivo Black", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Font sizes */
+  --text-xs: 0.75rem;        /* 12px */
+  --text-sm: 0.875rem;       /* 14px */
+  --text-base: 1rem;         /* 16px */
+  --text-lg: 1.125rem;       /* 18px */
+  --text-xl: 1.25rem;        /* 20px */
+  --text-2xl: 1.5rem;        /* 24px */
+  --text-3xl: 1.875rem;      /* 30px */
+
+  /* Shadows - 3 levels as per shadcn principles */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+
+  /* Z-index scale */
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
 }
-#popup{
+
+/* ============================================
+   BASE STYLES & RESET
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: var(--spacing-4);
+}
+
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+h5 { font-size: var(--text-base); }
+h6 { font-size: var(--text-sm); }
+
+p {
+  margin-bottom: var(--spacing-4);
+}
+
+a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: hsl(var(--primary) / 0.8);
+}
+
+/* Lists */
+ul, ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+/* Card component base */
+.card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Visually hidden (accessibility) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Hide class */
+.hidden {
+  display: none !important;
+}
+
+/* Text utilities */
+.text-muted {
+  color: hsl(var(--muted-foreground));
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-sm {
+  font-size: var(--text-sm);
+}
+
+.text-lg {
+  font-size: var(--text-lg);
+}
+
+/* ============================================
+   MODAL / POPUP STYLES (Shared)
+   ============================================ */
+
+#popup {
   display: none;
-  z-index: 9999;
-  background:rgb(0,0,0, .5);
-  width: 100vw;
-  height: 100vh;
-  top: 0;
   position: fixed;
-  margin: 0;
+  inset: 0;
+  z-index: var(--z-modal-backdrop);
+  background-color: hsl(0 0% 0% / 0.8);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
 }
-#innerpopup{
- background-color: #0d0d0d;
- border: 5px solid white;
-  padding: 20px;
-   width: 60%; margin-top: 4%;
+
+#popup.show {
+  display: flex;
 }
-.destroy:hover{
+
+#innerpopup {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  width: 100%;
+  max-width: 600px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.destroy {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  color: hsl(var(--muted-foreground));
+  font-size: var(--text-2xl);
+  cursor: pointer;
+  transition: color var(--transition-base);
+  background: none;
+  border: none;
+  padding: var(--spacing-2);
+  line-height: 1;
+}
+
+.destroy:hover {
+  color: hsl(var(--foreground));
+}
+
+/* ============================================
+   CUSTOM FONT - theFont (Archivo Black)
+   ============================================ */
+
+@font-face {
+  font-family: theFont;
+  src: url(NONK.ttf);
+}
+
+.font-display {
+  font-family: theFont, var(--font-display), -apple-system, BlinkMacSystemFont, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+/* ============================================
+   BUTTON COMPONENTS
+   Base button styles
+   ============================================ */
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all var(--transition-base);
+}
+
+/* Reset button hover effects that will be overridden */
+button:hover {
   cursor: pointer;
 }
-
-
