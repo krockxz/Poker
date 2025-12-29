@@ -14,18 +14,6 @@ The following is basic metadata and importing the base stylesheet and script
 <link rel="stylesheet" type="text/css" href="styles/login.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!--
-The above is basic metadata and importing the base stylesheet and script
-
-Jquery import:
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-Bootstrap CSS import:
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
--->
-
 <title>Poker - Login</title>
 </head>
 <body>
@@ -70,34 +58,7 @@ Bootstrap CSS import:
 <center><p id="footer"> Poker 
   
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bundled Scripts -->
+<script src="dist/bundle.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
-
-
-<script src="/socket.io/socket.io.js"></script>
-<script src="dist/functions.js"></script>
-<script src="dist/index.js"></script>
-<script src="dist/connections.js"></script>
-<script src="dist/onConnect.js"></script>
-
-<script>
-  $(document).ready(function(){
-  $(".create").click(function(){
-    $("#popup").slideDown();
-    });
-    $(".destroy").click(function(){
-    $("#popup").fadeOut();
-    });
-    $("#checker").click(function(){
-      $(".serverpassword").toggle();
-      // if($("#password").is(":visible")){
-      //   $("#password").hide();
-      // }
-    
-    });
-    
-  });
-
-</script>
 </html>

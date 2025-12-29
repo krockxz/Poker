@@ -40,4 +40,9 @@ coverage/
 .npm/
 
 # Optional eslint cache
-.eslintcache 
+.eslintcache
+
+# AI/Agent folders
+.claude/
+.gemini/
+.anthropic/

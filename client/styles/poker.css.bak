@@ -418,24 +418,3 @@ li{
 }
 
 
-
-/* UI Hints */
-.hint-box {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 10px auto;
-  width: 50%;
-  border: 1px solid #4CAF50;
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
-  animation: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}

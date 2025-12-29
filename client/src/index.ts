@@ -1,6 +1,14 @@
 // Global variables
-import { io, Socket } from 'socket.io-client';
+import { Socket } from 'socket.io-client';
 import $ from 'jquery';
+import { sock } from './socket';
+import {
+  yourStack,
+  currPot,
+  currMoneyInBetting,
+  username,
+  setCurrPot
+} from './state';
 import {
   writeEvent,
   writeConsoleEvent,
@@ -15,7 +23,8 @@ import {
   sendCheck,
   sendCall,
   sendFold,
-  sendRaise
+  sendRaise,
+  updateHint
 } from './functions';
 
 declare global {
@@ -25,15 +34,6 @@ declare global {
     currMoneyInBetting: number;
   }
 }
-
-// Initialize globals
-let yourStack: number = window.yourStack || 0;
-let currPot: number = window.currPot || 0;
-let currMoneyInBetting: number = window.currMoneyInBetting || 0;
-let username: string | null = localStorage.getItem('name');
-
-// Initialize socket
-const sock: Socket = io();
 
 // DOM Elements
 const userList = document.getElementById('userList');
@@ -67,10 +67,12 @@ sock.on('roomUsers', ({ room, users, stacksizes }: {
 sock.on('gameBegun', () => {
   console.log("someone started a game!!!!");
   $("#generate").hide();
+  updateHint("Game started. Dealing cards...");
 });
 
 sock.on('dealBoard', (arr: string[]) => {
   showBoard(arr);
+  updateHint("New cards on board. Check your hand!");
 });
 
 sock.on('potSize', (num: number) => {
@@ -78,7 +80,7 @@ sock.on('potSize', (num: number) => {
   if (pot) {
     pot.innerText = '';
     pot.innerText = `Pot Size: ${num}`;
-    currPot = num;
+    setCurrPot(num);
   }
 });
 
@@ -104,6 +106,7 @@ sock.on('yourTurn', (turnTime: number) => {
 
   yourTurn = true;
   writeConsoleEvent(`You have ${turnTime / 1000} seconds to take your turn until folded`);
+  updateHint("IT'S YOUR TURN! Check, Call, Raise or Fold.");
   timeOut = window.setTimeout(() => {
     sock.emit('playerTurn', "autoFold");
     writeConsoleEvent("Time has run out, you have been auto check/folded.");
@@ -136,6 +139,3 @@ sock.on("audio", (audiotype: string) => {
 (document.getElementById("callbutton") as HTMLElement)?.addEventListener('click', sendCall);
 (document.getElementById("foldbutton") as HTMLElement)?.addEventListener('click', sendFold);
 (document.getElementById("raisebutton") as HTMLElement)?.addEventListener('click', sendRaise);
-
-// Export functions for use in other modules
-export { sock, yourStack, currPot, currMoneyInBetting, username };

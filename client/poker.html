@@ -15,18 +15,6 @@ The following is basic metadata and importing the base stylesheet and script
 <link rel="stylesheet" type="text/css" href="styles/hostmenu.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!--
-The above is basic metadata and importing the base stylesheet and script
-
-Jquery import:
-
-
-Bootstrap CSS import:
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
--->
-
 <title>Poker</title>
 </head>
 <body>
@@ -48,14 +36,6 @@ Bootstrap CSS import:
             <span class="slider2"></span>
           </label> <br>  <br>  <br>
         
-          <!-- <br> <p class="popuptext">Password? 
-        
-            <label class="switch">
-              <input type="checkbox" id="checker">
-              <span class="slider round"></span>
-            </label>
-    <br>  <br>
-            <br> <input id="popuppassword" class="serverpassword" type="text" name="password" placeholder="Not required" autocomplete="off"> </p> -->
           <button class="actionbuttons">SAVE CHANGES</button>
         </div>
         <div id="playeroptions" class="tabcont">
@@ -80,7 +60,7 @@ Bootstrap CSS import:
         </div>
     </center>
     </div>
-  <img id="tableLogo" src="img/official-logo-white.png">
+  <img id="tableLogo" src="styles/img/logo-file.png">
   <div id="menu" title="Menu"><i class="fa fa-bars"></i></div>
   <div id="pause" title="Pause Game"><i class="fa fa-pause"></i></div>
   <center><button id="generate">Begin Game</button>
@@ -118,6 +98,9 @@ Bootstrap CSS import:
 </center>
 <!-- TABLE END -->
 
+
+
+<div id="gameHints" class="hint-box">Waiting for game to start...</div>
 
 <div id="actionbuttons">
   
@@ -184,49 +167,8 @@ Bootstrap CSS import:
 <h2 id="lobby">Lobby <span id="roomName"></span></h2>
 <!-- LOBBY END -->
 
-<!-- 
- <div id="usersinRoom">
-  <ul id="userList">
-    <li >
-      HIIII
-      <img src="img/blue_back.png">
-    </li>
-  </ul>
- </div> -->
-
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
-<script>
-  $(document).ready(function(){
-  $("#menu").click(function(){
-    $("#popup").slideDown();
-    });
-    $(".destroy").click(function(){
-    $("#popup").fadeOut();
-    });
-    $("#checker").click(function(){
-      $(".serverpassword").toggle();
-      // if($("#password").is(":visible")){
-      //   $("#password").hide();
-      // }
-    
-    });
-    
-  });
-
-</script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="dist/functions.js"></script>
-<script src="dist/index.js"></script>
-<script src="dist/poker.js"></script>
-<script src="dist/connections.js"></script>
-<script src="dist/onConnect.js"></script>
-<script>
-  console.log("TypeScript migration complete");
-
-</script>
-
+<!-- Bundled Scripts -->
+<script src="dist/bundle.js"></script>
 
 </html>

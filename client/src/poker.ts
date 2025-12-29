@@ -1,15 +1,4 @@
-// Poker UI functions and event handlers
-
-// Global variables for game state
-let yourStack: number = 0;
-let currPot: number = 0;
-let currMoneyInBetting: number = 0;
-
-// Expose to window for access in HTML
-(window as any).yourStack = yourStack;
-(window as any).currPot = currPot;
-(window as any).currMoneyInBetting = currMoneyInBetting;
-
+import { yourStack, currPot, currMoneyInBetting } from './state';
 import $ from 'jquery';
 
 $(document).ready(function () {
@@ -108,3 +97,17 @@ if (aRaise) {
     (window as any).allInRaise();
   };
 };
+
+// Menu handlers from inline script
+$(document).ready(function () {
+  $("#menu").click(function () {
+    $("#popup").slideDown();
+  });
+  $(".destroy").click(function () {
+    $("#popup").fadeOut();
+  });
+  $("#checker").click(function () {
+    $(".serverpassword").toggle();
+  });
+});
+

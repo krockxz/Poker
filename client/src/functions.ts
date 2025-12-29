@@ -1,11 +1,13 @@
-import { sock } from './index';
+import { sock } from './socket';
 import $ from 'jquery';
-
-// Global variables
-export let yourStack: number = 0;
-export let currPot: number = 0;
-export let currMoneyInBetting: number = 0;
-export let username: string | null = localStorage.getItem('name');
+import {
+  yourStack,
+  currPot,
+  currMoneyInBetting,
+  username,
+  setYourStack,
+  setCurrMoneyInBetting
+} from './state';
 
 // Text writing functions
 export function writeEvent(text: string): void {
@@ -36,6 +38,14 @@ export function writeConsoleEvent(text: string): void {
   }
 }
 
+export function updateHint(text: string): void {
+  const hintBox = document.getElementById("gameHints");
+  if (hintBox) {
+    hintBox.innerText = text;
+    hintBox.style.display = 'block';
+  }
+}
+
 // Form submission
 export function onFormSubmitted(e: Event): void {
   e.preventDefault();
@@ -51,6 +61,7 @@ export function onFormSubmitted(e: Event): void {
 // Start game
 export function startGame(): void {
   console.log("You have started the game");
+  updateHint("Game Started! Initializing...");
   sock.emit('startGame');
 }
 
@@ -85,6 +96,7 @@ export function sendCheck(e: Event): void {
     e.preventDefault();
     sock.emit('audio', "check");
     sock.emit('playerTurn', "check");
+    updateHint("Checked. Waiting for others...");
   } else {
     e.preventDefault();
     writeEvent("Not your turn");
@@ -96,6 +108,7 @@ export function sendCall(e: Event): void {
     e.preventDefault();
     sock.emit('audio', "raise");
     sock.emit('playerTurn', "call");
+    updateHint("Called. Waiting for others...");
   } else {
     e.preventDefault();
     writeEvent("Not your turn");
@@ -107,6 +120,7 @@ export function sendFold(e: Event): void {
     e.preventDefault();
     sock.emit('audio', "fold");
     sock.emit('playerTurn', "fold");
+    updateHint("Folded. Waiting for next hand...");
   } else {
     e.preventDefault();
     writeEvent("Not your turn");
@@ -120,6 +134,7 @@ export function sendRaise(e: Event): void {
     if (!raiseInput) return;
     const raiseVal = raiseInput.value;
     sock.emit('playerTurn', raiseVal);
+    updateHint(`Raised to ${raiseVal}. Waiting for others...`);
   } else {
     e.preventDefault();
     writeEvent("Not your turn");
@@ -128,6 +143,7 @@ export function sendRaise(e: Event): void {
 
 export function sendAllIn(): void {
   sock.emit('playerTurn', "playerIsAllIn");
+  updateHint("All In! Good luck.");
 }
 
 // Audio playback
@@ -183,8 +199,8 @@ export function createPlayers(playerArr: any[]): void {
         myPlayer.classList.add("youGlow");
       }
 
-      currMoneyInBetting = currPlayer.moneyIn;
-      yourStack = currPlayer.stack;
+      setCurrMoneyInBetting(currPlayer.moneyIn);
+      setYourStack(currPlayer.stack);
 
       console.log(yourStack);
       const myName = document.getElementById("myName");
@@ -245,10 +261,10 @@ function appendPlayer(currPlayer: PlayerData, i: number, dealerIndex: number): v
 }
 
 export function createListPlayers(playerArr: PlayerData[]): void {
-  const playersList = document.getElementById("hostsList");
-  if (!playersList) return;
+  const hostsList = document.getElementById("hostsList");
+  if (!hostsList) return;
 
-  playersList.innerHTML = "";
+  hostsList.innerHTML = "";
   for (let i = 0; i < playerArr.length; i++) {
     const liElement = document.createElement('li');
     const currPlayer = playerArr[i];
@@ -258,6 +274,6 @@ export function createListPlayers(playerArr: PlayerData[]): void {
     liElement.innerHTML += '<button class="actionbuttons smallerfont">Make Host</button>';
     liElement.innerHTML += '<button class="actionbuttons smallerfont">Change Stack</button>';
     liElement.innerHTML += '<input class="innerinput smallerfont" autocomplete="off" type="number" title="newstack" /> </span></p>';
-    playersList.appendChild(liElement);
+    hostsList.appendChild(liElement);
   }
 }

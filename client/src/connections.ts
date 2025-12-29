@@ -1,4 +1,4 @@
-import { sock } from './index';
+import { sock } from './socket';
 import $ from 'jquery';
 
 let username = '';

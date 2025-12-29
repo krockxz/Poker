@@ -1,7 +1,7 @@
 // On connection, local storage will be checked to see if the lobby and username of the player is valid.
 // If so, it will emit them to the server and correctly be put in the right game.
 
-import { sock } from './index';
+import { sock } from './socket';
 
 const storedLobby = localStorage.getItem('lobby');
 const storedName = localStorage.getItem('name');
