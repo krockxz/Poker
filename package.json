@@ -4,8 +4,8 @@
   "description": "Poker Web Application",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "dev": "nodemon server/server.js",
+    "start": "node server/dist/server.js",
+    "dev": "cd server && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -15,7 +15,10 @@
   "devDependencies": {
     "nodemon": "^2.0.6"
   },
-  "keywords": ["poker", "websockets"],
+  "keywords": [
+    "poker",
+    "websockets"
+  ],
   "author": "",
   "license": "ISC"
 }
